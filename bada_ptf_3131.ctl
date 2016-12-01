@@ -1,7 +1,7 @@
 load data 
-infile 'C:\Users\spi\kaos\Bada4TrafficComplexity\bada_3131.csv' "str '\n'"
+infile 'bada_ptf_3131.csv' "str '\n'"
 append
-into table OGIS_BADA_AIRCRAFT_PERF
+into table OGIS_BADA_AIRCRAFT_PERF_TEST
 fields terminated by ','
 OPTIONALLY ENCLOSED BY '"' AND '"'
 trailing nullcols

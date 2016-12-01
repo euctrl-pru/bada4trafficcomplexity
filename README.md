@@ -66,7 +66,7 @@ The following command will extract the relevant aircraft performance
 parameters in CSV format:
 
 ```shell
-$ ./convertPTF.awk bada_3131/*.PTF > bada_3131.csv
+$ awk -f convertPTF.awk -v ver=3.13.1 bada_3131/*.PTF > bada_ptf_3131.csv
 $ echo $?
 0
 ```
@@ -74,27 +74,31 @@ $ echo $?
 The outcome is similar to the following:
 
 ```shell
-$ head bada_3131.csv
-AC_TYPE,FL,CRUISE_TAS,CRUISE_FUEL_LO,CRUISE_FUEL_NO,CRUISE_FUEL_HI,CLIMB_TAS,CLIMB_ROCD_LO,CLIMB_ROCD_NO,CLIMB_ROCD_HI,CLIMB_FUEL_NO,DESCENT_TAS,DESCENT_ROCD_NO,DESCENT_FUEL_NO
-A124__,0,,,,,171,2204,1385,975,476.2,156,869,116.1
-A124__,5,,,,,173,2202,1380,968,473.6,157,878,115.5
-A124__,10,,,,,174,2201,1375,961,470.9,163,861,114.6
-A124__,15,,,,,180,2304,1440,1012,467.2,175,829,113.4
-A124__,20,,,,,182,2301,1434,1004,464.5,207,1261,110.2
-A124__,30,230,143.3,197.3,246.7,205,2666,1661,1183,454.6,230,1375,108.6
-A124__,40,233,143.0,197.0,246.4,240,3067,1884,1343,442.4,233,1397,106.9
-A124__,60,272,160.7,201.9,239.6,272,3319,1925,1313,425.6,272,1841,103.6
-A124__,80,280,159.8,200.9,238.6,280,3259,1872,1259,413.6,280,1890,100.3
-...
+$ head bada_ptf_3131.csv
+AC_TYPE,FL,CRUISE_TAS,CRUISE_FUEL_LO,CRUISE_FUEL_NO,CRUISE_FUEL_HI,CLIMB_TAS,CLIMB_ROCD_LO,CLIMB_ROCD_NO,CLIMB_ROCD_HI,CLIMB_FUEL_NO,DESCENT_TAS,DESCENT_ROCD_NO,DESCENT_FUEL_NO,BADA_VERSION
+A124__,0,,,,,171,2204,1385,975,476.2,156,869,116.1,3.13.1
+A124__,5,,,,,173,2202,1380,968,473.6,157,878,115.5,3.13.1
+A124__,10,,,,,174,2201,1375,961,470.9,163,861,114.6,3.13.1
+A124__,15,,,,,180,2304,1440,1012,467.2,175,829,113.4,3.13.1
+A124__,20,,,,,182,2301,1434,1004,464.5,207,1261,110.2,3.13.1
+A124__,30,230,143.3,197.3,246.7,205,2666,1661,1183,454.6,230,1375,108.6,3.13.1
+A124__,40,233,143.0,197.0,246.4,240,3067,1884,1343,442.4,233,1397,106.9,3.13.1
+A124__,60,272,160.7,201.9,239.6,272,3319,1925,1313,425.6,272,1841,103.6,3.13.1
+A124__,80,280,159.8,200.9,238.6,280,3259,1872,1259,413.6,280,1890,100.3,3.13.1
 ```
 
 ## Import to ORACLE
 
-An import script for SQL Loader can be generated via SQL Developer as described
-in [this post][sqlldr].
+You can use TOAD or SQL Developer to load the CSV files in the relevant tables.
 
-**Please change the relevant filepath in order to accomodate for the actual
-location of the CSV and log files and/or ORACLE table.**
+Otherwise import scripts and support files for SQL Loader can be generated via
+SQL Developer as described in [this post][sqlldr].
+
+The files `bada_ptf_3131.sh`, `bada_ptf_3131.bat` and `bada_ptf_3131.ctl` are
+an example.
+
+If you want to reuse them, **Please change the relevant filepath in order to
+accomodate for the actual location of the CSV and log files and/or ORACLE table.**
 
 In order to run the `bada_3131.csv` it then suffice to execute
 
