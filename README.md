@@ -5,6 +5,14 @@ Traffic Complexity Score uses BADA coefficients for aircraft performance.
 The scripts in this directory are used to extract the aircraft performance
 parameters in a CSV file that can then be imported in the relevant ORACLE schema.
 
+Please note that all scripts are version controlled under git and
+hosted on Github at the following URL:
+
+[https://github.com/euctrl-pru/bada4trafficcomplexity][repo]
+
+Should you need any changes, please submit a pull request.
+
+
 ## Extract BADA dataset
 
 Extract the BADA zip in a folder, i.e. `bada_3131`
@@ -107,4 +115,5 @@ $ ./bada_3131.sh
 ```
 
 
+[repo]: <https://github.com/euctrl-pru/bada4trafficcomplexity> "BADA scripts repo"
 [sqlldr]: <http://www.thatjeffsmith.com/archive/2012/08/using-oracle-sql-developer-to-setup-sqlloader-runs/> "Generate SQL Loader script"
