@@ -8,7 +8,7 @@
 # Exit statu is 0 if all ok, 1 otherwise.
 # Usage
 #
-# $ awk -f h:/bada/convertSYN.awk -v ver=3.13.1 bada_3131/SYNONYM.NEW > bada_syn_3131.csv
+# $ awk -f convertSYN.awk -v ver=3.13.1 bada/SYNONYM.NEW > bada_syn.csv
 # $ echo $?
 # 0 # all ok!!!
 

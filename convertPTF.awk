@@ -8,7 +8,7 @@
 # Exit statu is 0 if all ok, 1 otherwise.
 # Usage
 #
-# $ awk -f h:/bada/convertPTF.awk -v ver=3.13.1 bada_3131/*.PTF > bada_ptf_3131.csv
+# $ awk -f convertPTF.awk -v ver=3.13.1 bada/*.PTF > bada_ptf.csv
 # $ echo $?
 # 0 # all ok!!!
 

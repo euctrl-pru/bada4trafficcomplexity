@@ -1,0 +1,1 @@
+sqlldr "$PRU_OGIS_USR/$PRU_OGIS_PWD@$PRU_OGIS_DBNAME" CONTROL=bada_ptf.ctl LOG=bada_ptf.log BAD=bada_ptf.bad skip=1

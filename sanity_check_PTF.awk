@@ -5,7 +5,7 @@
 #
 # Usage
 #
-# $ awk -f h:/bada/sanity_check_PTF.awk bada_3131/*.PTF
+# $ awk -f sanity_check_PTF.awk bada/*.PTF
 
 # capture aircraft type
 FNR == 3 { AC_TYPE = $2; error = 0 }

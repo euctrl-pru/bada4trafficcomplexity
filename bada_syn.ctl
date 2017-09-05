@@ -1,5 +1,5 @@
-load data 
-infile 'bada_syn_3131.csv' "str '\n'"
+load data
+infile 'bada_syn.csv' "str '\n'"
 append
 into table OGIS_BADA_AIRCRAFT_TYPE_TEST
 fields terminated by ','
