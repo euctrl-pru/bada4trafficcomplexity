@@ -139,6 +139,8 @@ an example for the `PTF` values.
 If you want to reuse them, **Please change the relevant filepath in order to
 accomodate for the actual location of the CSV and log files and/or ORACLE table.**
 
+For example `bada_ptf.ctl` and `bada_syn.ctl` need to specify `OGIS_BADA_AIRCRAFT_PERF_3_14` and `OGIS_BADA_AIRCRAFT_TYPE_3_14` respectively as table names holding performance and aircraft type values.
+
 In order to import the `bada_ptf.csv`  and `bada_syn.csv` it then suffice to execute
 
 ```shell
