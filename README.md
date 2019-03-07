@@ -66,7 +66,7 @@ total 10045
 The `awk` scripts expect Unix line-ending, so convert all BADA files:
 
 ```shell
-$ dos2unix bada/*.*
+$ dos2unix bada/*.PTF
 ```
 
 
