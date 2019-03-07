@@ -28,7 +28,7 @@ You can either run a Unix script `.sh` or a MS Windows batch script `.bat`.
 
 ## Extract BADA dataset
 
-Extract the BADA zip in a folder named `bada`
+Extract the BADA zip in a folder named `bada` (**if you  use double-click and 7unzip: convert to Unix line-ending using `dos2unix`**)
 
 ```shell
 $ unzip -d bada /e/Bada/bada_314.zip
