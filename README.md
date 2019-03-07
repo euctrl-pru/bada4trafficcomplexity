@@ -28,36 +28,47 @@ You can either run a Unix script `.sh` or a MS Windows batch script `.bat`.
 
 ## Extract BADA dataset
 
-Extract the BADA zip in a folder named `bada`
+Extract the BADA main and update zip files in a folder named `bada` (**Accept to overwrite the `SYNONYM.NEW`**)
 
 ```shell
-$ unzip -d bada /e/Bada/bada_314.zip
+$ unzip -d bada /g/HQ/dgof-pru/Data/DataProcessing/Bada/3.14/bada_314_96b6f733f5b65f32a5e7.zip
+$ unzip -d bada /g/HQ/dgof-pru/Data/DataProcessing/Bada/3.14/bada_314_update_201810_c1d6e14cc247c8f5b6f6.zip
 ```
+
 
 The `bada` folder should now contains a set of files like:
 
 ```shell
 $ ls -l bada/
-total 6580
--rw-r--r-- 1 spi 1049089  2547 May 13  2013 A124__.APF
--rw-r--r-- 1 spi 1049089  4453 May 13  2013 A124__.OPF
--rw-r--r-- 1 spi 1049089 14376 May 22  2013 A124__.PTD
--rw-r--r-- 1 spi 1049089  5401 May 22  2013 A124__.PTF
--rw-r--r-- 1 spi 1049089  2547 May 15  2013 A140__.APF
--rw-r--r-- 1 spi 1049089  4453 May 15  2013 A140__.OPF
--rw-r--r-- 1 spi 1049089 10208 May 22  2013 A140__.PTD
--rw-r--r-- 1 spi 1049089  4087 May 22  2013 A140__.PTF
+$ ls -l bada
+total 10045
+-rw-r--r-- 1 spi 1049089    2523 Mar  7 08:26 A10___.APF
+-rw-r--r-- 1 spi 1049089    4392 Mar  7 08:26 A10___.OPF
+-rw-r--r-- 1 spi 1049089   15279 Mar  7 08:26 A10___.PTD
+-rw-r--r-- 1 spi 1049089    5654 Mar  7 08:26 A10___.PTF
+-rw-r--r-- 1 spi 1049089    2523 Mar  7 08:26 A124__.APF
+-rw-r--r-- 1 spi 1049089    4392 Mar  7 08:26 A124__.OPF
+-...
 ...
-...
--rw-r--r-- 1 spi 1049089  2547 May  7  2013 YK40__.APF
--rw-r--r-- 1 spi 1049089  4453 Aug 22  2014 YK40__.OPF
--rw-r--r-- 1 spi 1049089 10729 Aug 25  2014 YK40__.PTD
--rw-r--r-- 1 spi 1049089  4251 Aug 25  2014 YK40__.PTF
--rw-r--r-- 1 spi 1049089  2547 May  7  2013 YK42__.APF
--rw-r--r-- 1 spi 1049089  4453 May  7  2013 YK42__.OPF
--rw-r--r-- 1 spi 1049089 12292 May 22  2013 YK42__.PTD
--rw-r--r-- 1 spi 1049089  4743 May 22  2013 YK42__.PTF
+-rw-r--r-- 1 spi 1049089    8245 Mar  7 08:29 U2____.PTF
+-rw-r--r-- 1 spi 1049089    2523 Mar  7 08:29 YK40__.APF
+-rw-r--r-- 1 spi 1049089    4392 Mar  7 08:29 YK40__.OPF
+-rw-r--r-- 1 spi 1049089   10626 Mar  7 08:29 YK40__.PTD
+-rw-r--r-- 1 spi 1049089    4196 Mar  7 08:30 YK40__.PTF
+-rw-r--r-- 1 spi 1049089    2523 Mar  7 08:30 YK42__.APF
+-rw-r--r-- 1 spi 1049089    4392 Mar  7 08:30 YK42__.OPF
+-rw-r--r-- 1 spi 1049089   12177 Mar  7 08:30 YK42__.PTD
+-rw-r--r-- 1 spi 1049089    4682 Mar  7 08:30 YK42__.PTF
 ```
+
+## Convert to Unix line-ending
+
+The `awk` scripts expect Unix line-ending, so convert all BADA files:
+
+```shell
+$ dos2unix bada/*.*
+```
+
 
 ## Sanity check
 
@@ -91,10 +102,10 @@ The following command will extract the relevant aircraft performance
 parameters in CSV format:
 
 ```shell
-$ awk -f convertPTF.awk -v ver=3.14 bada/*.PTF > bada_ptf.csv
+$ awk -f convertPTF.awk -v ver=3.14-201810 bada/*.PTF > bada_ptf.csv
 $ echo $?
 0
-$ awk -f convertSYN.awk -v ver=3.14 bada/SYNONYM.NEW > bada_syn.csv
+$ awk -f convertSYN.awk -v ver=3.14-201810 bada/SYNONYM.NEW > bada_syn.csv
 $ echo $?
 0
 ```
@@ -104,15 +115,15 @@ The outcome is similar to the following:
 ```shell
 $ head bada_ptf.csv
 AC_TYPE,FL,CRUISE_TAS,CRUISE_FUEL_LO,CRUISE_FUEL_NO,CRUISE_FUEL_HI,CLIMB_TAS,CLIMB_ROCD_LO,CLIMB_ROCD_NO,CLIMB_ROCD_HI,CLIMB_FUEL_NO,DESCENT_TAS,DESCENT_ROCD_NO,DESCENT_FUEL_NO,BADA_VERSION
-A124__,0,,,,,171,2204,1385,975,476.2,156,869,116.1,3.14
-A124__,5,,,,,173,2202,1380,968,473.6,157,878,115.5,3.14
-A124__,10,,,,,174,2201,1375,961,470.9,163,861,114.6,3.14
-A124__,15,,,,,180,2304,1440,1012,467.2,175,829,113.4,3.14
-A124__,20,,,,,182,2301,1434,1004,464.5,207,1261,110.2,3.14
-A124__,30,230,143.3,197.3,246.7,205,2666,1661,1183,454.6,230,1375,108.6,3.14
-A124__,40,233,143.0,197.0,246.4,240,3067,1884,1343,442.4,233,1397,106.9,3.14
-A124__,60,272,160.7,201.9,239.6,272,3319,1925,1313,425.6,272,1841,103.6,3.14
-A124__,80,280,159.8,200.9,238.6,280,3259,1872,1259,413.6,280,1890,100.3,3.14
+A10___,0,,,,,155,3164,2637,2271,38.7,150,799,6.4,3.14-201810
+A10___,5,,,,,156,3139,2611,2244,38.5,151,812,6.4,3.14-201810
+A10___,10,,,,,157,3114,2585,2217,38.2,157,1178,3.8,3.14-201810
+A10___,15,,,,,164,3198,2641,2256,38.7,169,1257,3.8,3.14-201810
+A10___,20,,,,,165,3171,2613,2227,38.5,180,1687,3.8,3.14-201810
+A10___,30,224,17.3,19.2,21.1,188,3474,2810,2362,41.0,183,1712,3.8,3.14-201810
+A10___,40,228,17.5,19.3,21.3,212,3716,2885,2335,43.4,185,1737,3.8,3.14-201810
+A10___,60,234,17.8,19.7,21.7,218,3576,2732,2192,42.3,191,1787,3.8,3.14-201810
+A10___,80,241,18.2,20.1,22.1,225,3394,2572,2044,41.2,197,1840,3.8,3.14-201810
 ```
 
 ## Import to ORACLE
@@ -127,6 +138,8 @@ an example for the `PTF` values.
 
 If you want to reuse them, **Please change the relevant filepath in order to
 accomodate for the actual location of the CSV and log files and/or ORACLE table.**
+
+For example `bada_ptf.ctl` and `bada_syn.ctl` need to specify `OGIS_BADA_AIRCRAFT_PERF_3_14` and `OGIS_BADA_AIRCRAFT_TYPE_3_14` respectively as table names holding performance and aircraft type values.
 
 In order to import the `bada_ptf.csv`  and `bada_syn.csv` it then suffice to execute
 
