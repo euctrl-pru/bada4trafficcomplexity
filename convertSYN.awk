@@ -21,7 +21,7 @@ BEGIN {
     }
 
     FIELDWIDTHS = "5 7 19 26 8 1"
-    print "AIRCRAFT_CODE,MANUFACTURER,MODEL,AT_ID,BADA_VERSION"
+    print "AIRCRAFT_CODE,MANUFACTURER,MODEL,AT_ID,OLD_AIRCRAFT_CODE,BADA_VERSION"
 }
 
 # spit the values from the aircraft synonym table
@@ -32,7 +32,7 @@ BEGIN {
     }
 
 #    print ">" $2 "<,>" $3 "<,>" $4 "<,>" $5 "<"
-    print $2 "," $3 "," $4 "," $5 "," ver
+    print $2 "," $3 "," $4 "," $5 ",," ver
 }
 
 END {
