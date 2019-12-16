@@ -12,6 +12,11 @@ https://github.com/euctrl-pru/bada4trafficcomplexity
 
 Should you need any changes, please submit a pull request.
 
+**NOTE**: there is an R script that can help in generating all the `.csv` and
+`.txt` files. (upload to Oracle can then be done trivially as detailed below
+or via R directly.)
+
+
 ## Prerequisites and Setup
 
 You need to set the following environment variable for the relevant DB connection:
