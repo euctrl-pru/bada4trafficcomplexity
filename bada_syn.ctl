@@ -1,7 +1,7 @@
 load data
 infile 'bada_syn.csv' "str '\n'"
 append
-into table OGIS_BADA_AIRCRAFT_TYPE_3_14
+into table OGIS_BADA_AIRCRAFT_TYPE_3_15
 fields terminated by ','
 OPTIONALLY ENCLOSED BY '"' AND '"'
 trailing nullcols
