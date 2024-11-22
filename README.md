@@ -142,9 +142,14 @@ The files `bada_ptf.sh` (for Windows `bada_ptf.bat`) and `bada_ptf.ctl` are
 an example for the `PTF` values.
 
 If you want to reuse them, **Please change the relevant filepath in order to
-accomodate for the actual location of the CSV and log files and/or ORACLE table.**
+accommodate for the actual location of the CSV and log files and/or ORACLE table.**
 
-For example `bada_ptf.ctl` and `bada_syn.ctl` need to specify `OGIS_BADA_AIRCRAFT_PERF_3_14` and `OGIS_BADA_AIRCRAFT_TYPE_3_14` respectively as table names holding performance and aircraft type values.
+For example `bada_ptf.ctl` and `bada_syn.ctl` need to specify 
+`OGIS_BADA_AIRCRAFT_PERF_3_16` and `OGIS_BADA_AIRCRAFT_TYPE_3_16` respectively
+as table names holding performance and aircraft type values.
+(To create these tables copy and adapt the code in the `SQL` tab of SQL
+Developer)
+
 
 In order to import the `bada_ptf.csv`  and `bada_syn.csv` it then suffice to execute
 
